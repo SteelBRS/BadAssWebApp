@@ -29,9 +29,4 @@ public class PostalCodeAndArea {
 	public String getPostalArea() {
 		return postalArea;
 	}
-
-	@Override
-	public String toString() {
-		return postalCode + " " + postalArea;
-	}
 }

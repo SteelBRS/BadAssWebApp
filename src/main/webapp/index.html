@@ -6,20 +6,40 @@
 	<link rel="stylesheet" href="css/jquery-ui-1.8.19.css" type="text/css" media="all"/>
 </head>
 <body>
-	<script src="js/jquery-1.7.2.min.js"></script>
-	<script src="js/jquery-ui-1.8.19.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			$("#postal").autocomplete({
-				source: "app/postalCodesAndAreas",
-				minLength: 2,
-				select: function( event, ui ) {
-				}
-			});
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery-ui-1.8.19.min.js"></script>
+<script src="js/jshashtable-2.1.js"></script>
+<script src="js/jquery.numberformatter-1.2.3.min.js"></script>
+<script>
+	$(document).ready(function () {
+		$("#postal").autocomplete({
+			source:"app/postalCodesAndAreas",
+			minLength:2,
+			select:function (event, ui) {
+			}
 		});
-	</script>
-	<form>
-		<label for="postal">Postal Code &amp; Area (auto-completion)</label> <input id="postal"/>
-	</form>
+
+		$.getJSON('app/persons', function (persons) {
+			var table_obj = $('#personsTable');
+			$.each(persons, function (index, person) {
+				table_obj.append($('<tr><td>' + person.name + '</td><td>' + person.height + '</td><td>' + person.weight + '</td><td>' +
+						$.formatNumber(person.weight / Math.pow(person.height / 100, 2), {format:"#.0", locale:"dk"}) + '</td></tr>'));
+			})
+		})
+	});
+</script>
+<form>
+	<label for="postal">Postal Code &amp; Area (auto-completion)</label> <input id="postal"/>
+	<br/>
+	<br/>
+	<table id="personsTable" border="1">
+		<tr>
+			<th>Name</th>
+			<th>Height (cm)</th>
+			<th>Weight (kg)</th>
+			<th><a href="http://en.wikipedia.org/wiki/Body_mass_index">BMI</a></th>
+		</tr>
+	</table>
+</form>
 </body>
 </html>

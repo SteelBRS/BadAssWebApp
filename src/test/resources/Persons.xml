@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:noNamespaceSchemaLocation="Persons.xsd">
+	<Person>
+		<Name>Andreas</Name>
+		<Height>190</Height>
+		<Weight>80</Weight>
+	</Person>
+	<Person>
+		<Name>Idar</Name>
+		<Height>180</Height>
+		<Weight>90</Weight>
+	</Person>
+	<Person>
+		<Name>Torben</Name>
+		<Height>194</Height>
+		<Weight>108</Weight>
+	</Person>
+</Persons>
